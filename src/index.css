@@ -16,6 +16,12 @@ code {
   text-transform: capitalize;
 }
 
+.text-error {
+  color: #901f1f;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .container {
   margin: auto;
   padding: 2rem;
