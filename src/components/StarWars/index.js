@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Character from '../Character';
 import './starwars.css';
 
 function StarWars() {
@@ -14,7 +15,7 @@ function StarWars() {
         if (validate())
             fetch('https://swapi.dev/api/people/' + id)
                 .then(res => res.json())
-                .then(data => setCharacter(data.name))
+                .then(data => setCharacter(data))
         else setError("Invalid id")
     }
 
@@ -33,7 +34,15 @@ function StarWars() {
             Search
         </button>
         { error && <span className="text-error">{error}</span>}
-        { !error && character && <h3>{character}</h3>}
+        { !error && character &&
+            <Character
+                name={character.name}
+                height={character.height}
+                mass={character.mass}
+                hair_color={character.hair_color}
+                eye_color={character.eye_color}
+            />
+        }
     </div>
   );
 }
