@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.text-uppercase {
+  text-transform: capitalize;
+}
+
+.container {
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
