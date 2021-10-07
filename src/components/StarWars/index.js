@@ -13,11 +13,15 @@ function StarWars() {
         return parseInt(id) > 0 && parseInt(id) < 84 && parseInt(id) !== 17
     }
 
-    const makeRequest = () => {
-        if (validate())
-            fetch('https://swapi.dev/api/people/' + id)
-                .then(res => res.json())
-                .then(data => setCharacter(data))
+    const makeRequest = async () => {
+        if (validate()) {
+            const c = await fetch('https://swapi.dev/api/people/' + id)
+            const data = await c.json()
+            const h = await fetch(data.homeworld)
+            const home = await h.json()
+            data.homeworld = home
+            setCharacter(data)
+        }
         else setError("Invalid id")
     }
 

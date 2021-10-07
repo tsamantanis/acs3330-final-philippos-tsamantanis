@@ -13,6 +13,7 @@ function CharacterList({ characters }) {
                     mass={character.mass}
                     hair_color={character.hair_color}
                     eye_color={character.eye_color}
+                    homeworld={character.homeworld}
                 />
             })}
         </div>
