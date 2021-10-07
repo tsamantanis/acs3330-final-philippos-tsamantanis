@@ -21,6 +21,9 @@ function StarWars() {
                 const h = await fetch(data.homeworld)
                 const home = await h.json()
                 data.homeworld = home
+                const filmsRes = await Promise.all(data.films.map(film => fetch(film)))
+                const filmsJSON = await Promise.all(filmsRes.map(res => res.json()))
+                data.films = filmsJSON
             }
             setCharacter(data)
         }
@@ -61,6 +64,8 @@ function StarWars() {
                 mass={character.mass}
                 hair_color={character.hair_color}
                 eye_color={character.eye_color}
+                homeworld={character.homeworld}
+                films={character.films}
             />
         }
         { !error && character &&
