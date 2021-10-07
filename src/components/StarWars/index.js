@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import Character from '../Character';
+import CharacterList from '../CharacterList';
 import './starwars.css';
 
 function StarWars() {
     const [id, setId] = useState(1)
     const [character, setCharacter] = useState(null) 
+    const [characterList, setCharacterList] = useState([])
     const [error, setError] = useState(null)
 
     function validate() {
@@ -17,6 +19,18 @@ function StarWars() {
                 .then(res => res.json())
                 .then(data => setCharacter(data))
         else setError("Invalid id")
+    }
+
+    function handleSave() {
+        let found = false
+        for (let i = 0; i < characterList.length; i += 1) {
+            if (character.url === characterList[i].url) {
+                found =  true
+            }
+        }
+
+        if (!found) setCharacterList([...characterList, character])
+        setCharacter(null)
     }
 
   return (
@@ -41,6 +55,19 @@ function StarWars() {
                 mass={character.mass}
                 hair_color={character.hair_color}
                 eye_color={character.eye_color}
+            />
+        }
+        { !error && character &&
+            <button
+                onClick={() => handleSave()}
+            >
+                Save
+            </button>
+        }
+        { characterList.length > 0 && <hr />}
+        { characterList.length > 0 && 
+            <CharacterList
+                characters={characterList}
             />
         }
     </div>
