@@ -2,3 +2,24 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+
+input {
+    background: transparent;
+    padding-left: 0.75rem;
+    color: #cb8e14;
+    border: 2px solid #cb8e14;
+    outline: none;
+    border-radius: 0;
+    min-height: 40px;
+    margin-right: 1rem;
+    text-transform: uppercase;
+}
+
+button {
+    background: transparent;
+    border: 8px double #cb8e14;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color:#cb8e14;
+    text-transform: uppercase;
+    cursor: pointer;
+}

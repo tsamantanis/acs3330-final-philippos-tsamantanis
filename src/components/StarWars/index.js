@@ -17,9 +17,11 @@ function StarWars() {
         if (validate()) {
             const c = await fetch('https://swapi.dev/api/people/' + id)
             const data = await c.json()
-            const h = await fetch(data.homeworld)
-            const home = await h.json()
-            data.homeworld = home
+            if (data) {
+                const h = await fetch(data.homeworld)
+                const home = await h.json()
+                data.homeworld = home
+            }
             setCharacter(data)
         }
         else setError("Invalid id")
